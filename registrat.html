@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/wallpaper.css">
+</head>
+<body>
+    <div class="wallpaper">
+        <img src="img/wall.jpg" alt="" srcset="">
+
+        <div class="back">
+            <a class="back_btn" href="main.html" title="<Назад"><Назад</a>
+        </div>
+
+        <div class="registrat">
+            <a class="registrat_btn" href="registrat.html" title="Регистрация">Регистрация</a>
+        </div>
+
+        <div class="entrance">
+            <a class="entrance_btn" href="entrance.html" title="Вход">Вход</a>
+        </div>
+        
+        <div class="center_block">
+            <h2>Регистрация</h2>
+
+            <form action="/submit" method="post">
+                <!-- Обычное текстовое поле -->
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+    
+                <!-- Поле для пароля -->
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+    
+                <!-- Поле для email с проверкой -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com">
+                <br><br>
+    
+                <!-- Кнопка отправки -->
+                <div class="send">
+                    <a class="send_btn" href="#" title="Отправить">Отправить</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JS -->
+    <script src="js/js.js"></script>
+</body>
+</html>
