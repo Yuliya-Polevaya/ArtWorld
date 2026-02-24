@@ -15,9 +15,9 @@
 }
 
 .center_block {
-    width: 700px;
+    width: 320px;
     height: 500px;
-    margin: -620px 26%;
+    margin: -620px 41%;
     position: absolute;
     background: #18106e;
     z-index: 2;
@@ -89,6 +89,29 @@
 }
 
 .entrance_btn:hover{
+    background: #FFF8C6;
+    color: #0D2B4E;
+    border: 2px solid #FFD700;
+    transition: all 0.2s ease;
+}
+
+.send_btn{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 20px;
+    color: #FFD700;
+    background: #1A237E;
+    border-radius: 41px;
+    border: 2px solid #FFD700;
+    margin-top: 20px;
+    margin: -665px 44%;
+    position: absolute;
+    z-index: 4;
+}
+
+.send_btn:hover{
     background: #FFF8C6;
     color: #0D2B4E;
     border: 2px solid #FFD700;

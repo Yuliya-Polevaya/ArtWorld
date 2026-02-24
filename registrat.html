@@ -24,6 +24,28 @@
         
         <div class="center_block">
             <h2>Регистрация</h2>
+
+            <form action="/submit" method="post">
+                <!-- Обычное текстовое поле -->
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+    
+                <!-- Поле для пароля -->
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+    
+                <!-- Поле для email с проверкой -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com">
+                <br><br>
+    
+                <!-- Кнопка отправки -->
+                <div class="send">
+                    <a class="send_btn" href="#" title="Отправить">Отправить</a>
+                </div>
+            </form>
         </div>
     </div>
 
