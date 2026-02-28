@@ -15,7 +15,7 @@
 }
 
 .center_block {
-    width: 320px;
+    width: 360px;
     height: 500px;
     margin: -620px 41%;
     position: absolute;
@@ -26,6 +26,18 @@
     box-shadow: 14px 13px 7px 6px rgba(80, 81, 172, 0.49);
 }
 
+.center_block label{
+    color: #FFD700;
+    margin-left: 100px;
+}
+
+.center_block h2{
+    color: #FFF8C6;
+    margin-left: 100px;
+}
+.center_block input{
+    margin-left: 92px;
+}
 .back_btn{
     display: inline-block;
     cursor: pointer;
