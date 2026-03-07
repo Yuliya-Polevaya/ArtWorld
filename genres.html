@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ArtWorld ~Жанры~</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.min.css">
+
     <link rel="stylesheet" href="css/css.css">
     <link rel="stylesheet" href="css/heading.css">
     <link rel="stylesheet" href="css/text_style/text.css">
@@ -15,9 +18,31 @@
             <div class="logo">
                 <img src="img/logot.png" alt="" srcset="">
             </div>
-            
-            <!-- Меню -->
-            <div class="menu">
+
+            <!-- Поиск -->
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Поиск по сайту...">
+                    <button type="submit" class="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="pop-up">
+                <button class="menu-btn" id="menuBtn">Меню</button>
+            </div>
+
+            <!-- Кнопка входа -->
+             <div class="registration">
+                <a class="login_btn" href="entrance.html" title="Вход/Регистрация">Вход/Регистрация</a>
+             </div> 
+
+        </div>
+
+        <!-- Меню -->
+        <div class="menu" id="popupMenu">
+            <div class="vcpl_menu"></div>
                 <ul id="navbar">
                     <li><a href="main.html">Главная</a></li>  
                     <li><a href="gallery.html">Галерея</a></li>  
@@ -28,12 +53,6 @@
                     <li><a href="styles.html">Стили</a></li>     
                 </ul> 
             </div>
-            
-            <!-- Кнопка входа -->
-             <div class="registration">
-                <a class="login_btn" href="entrance.html" title="Вход/Регистрация">Вход/Регистрация</a>
-             </div> 
-
         </div>
 
          <div class="content">
@@ -43,14 +62,18 @@
         <div class="footer">
             <div class="copyright">© 2026 ArtWorld - Мир искусства</div>
             <div class="footer-links">
-                <a href="#">О нас</a>
-                <a href="#">Контакты</a>
-                <a href="#">Помощь</a>
-                <a href="#">Политика конфиденциальности</a>
+                <a href="about_us.html">О нас</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="help.html">Помощь</a>
+                <a href="privacy_policy.html">Политика конфиденциальности</a>
             </div>
         </div>
 
+        
+
     <!-- JS -->
     <script src="js/js.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
