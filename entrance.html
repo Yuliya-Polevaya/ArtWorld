@@ -28,20 +28,17 @@
         <div class="center_block">
             <h2>Вход</h2>
 
-            <form action="/submit" method="post">
-                <label for="name_email">Введите своё имя или email:</label>
-                <br><br>
-                <input type="text" id="name_email" name="name_email">
-                <br><br>
-
-                <label for="password">Введите свой пароль:</label>
-                <br><br>
-                <input type="password" id="password" name="password" required>
-                <br><br>
-
-                <div class="send">
-                    <a class="send_btn" href="#" title="Отправить">Отправить</a>
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Введите свою почту</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">Можете ввести либо свою почту, либо свое имя</div>
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Введите пароль</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Вход</button>
             </form>
         </div>
     </div>

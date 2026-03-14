@@ -39,20 +39,30 @@
                 <input type="email" id="email" name="email" placeholder="email@mail.ru">
                 <br><br>
 
-
-                <label for="password">Придумайте пароль:</label>
-                <br><br>
-                <input type="password" id="password" name="password" required>
-                <br><br>
-
-                <label for="password">Повторите пароль:</label>
-                <br><br>
-                <input type="password" id="password" name="password" required>
-                <br><br>
-
-                <div class="send">
-                    <a class="send_btn" href="#" title="Отправить">Отправить</a>
+                <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Придумайте пароль</label>
                 </div>
+                <div class="col-auto">
+                    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                </div>
+                <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text">
+                        Длина должна составлять от 8 до 20 символов.
+                    </span>
+                </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Повтарите пароль</label>
+                </div>
+                <div class="col-auto">
+                    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
             </form>
         </div>
     </div>
