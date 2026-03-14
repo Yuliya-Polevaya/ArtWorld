@@ -26,18 +26,18 @@
         </div>
         
         <div class="center_block">
-            <h2>Регистрация</h2>
+            <h2 id="reg">Регистрация</h2>
 
             <form action="/submit" method="post">
-                <label for="name">Придумайте имя:</label>
-                <br><br>
-                <input type="text" id="name" name="name" required>
-                <br><br>
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Введите свое имя</label>
+                    <input type="text" class="form-control" id="exampleInputName">
+                </div>
 
-                <label for="email">Введите свою почту:</label>
-                <br><br>
-                <input type="email" id="email" name="email" placeholder="email@mail.ru">
-                <br><br>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Введите свою почту</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
 
                 <div class="row g-3 align-items-center">
                 <div class="col-auto">
