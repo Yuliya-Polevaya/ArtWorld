@@ -54,3 +54,22 @@
     <script src="js/js.js"></script>
 </body>
 </html>
+
+
+.footer{
+    width:100%;
+    margin-top:80px;
+    padding:30px;
+    text-align:center;
+    color:#FFD700;
+}
+
+.footer a{
+    color:#FFD700;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+.footer a:hover{
+    color:#FFF8C6;
+}

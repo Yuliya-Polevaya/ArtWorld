@@ -1,14 +1,16 @@
 *{
     margin: 0;
 }
+
 .heading{
     width: 100%;
     height: 80px;
-    background: #1A237E;
     display: flex;
     padding: 0px;
     align-items: center;
+    z-index: 100;
 }
+
 /* Логотип */
 .logo{
     width: 30%;
@@ -96,7 +98,7 @@
 }
 
 #navbar li {
-    margin: 25px 0;
+    margin: 20px 0;
 }
 
 #navbar li a {
@@ -139,21 +141,32 @@
 .content {
     width: 100%;
     padding: 20px;
-    background: #18106e;
+    /* background: #18106e; */
 }
+
 /* Хутер */
-.footer {
-    width: 100%;
-    height: 100px;
-    background: #1A237E;
-    color: #FFD700;
-    clear: both;
-    padding: 30px 0 0 30px;
+.footer{
+    width:100%;
+    margin-top:80px;
+    padding:30px;
+    text-align:center;
+    color:#FFD700;
 }
 
-.footer a {
-    color: #FFD700;
-    text-decoration: none;
-    margin-left: 20px;
+.footer a{
+    color:#FFD700;
+    text-decoration:none;
+    margin:0 15px;
 }
 
+.footer a:hover{
+    color:#FFF8C6;
+}
+
+.heading,
+.content,
+.footer,
+.menu {
+    position: relative;
+    z-index: 10;
+}
