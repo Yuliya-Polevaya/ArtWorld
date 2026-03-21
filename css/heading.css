@@ -1,5 +1,15 @@
 *{
     margin: 0;
+    padding: 0;
+    color: white;
+    font-family: serif;
+}
+
+body {
+    background: url("tecstura.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .heading{
@@ -41,6 +51,7 @@
     border: none;
     padding: 0 20px;
     font-size: 14px;
+    color: #1A237E;
 }
 
 .search-button {
@@ -61,17 +72,18 @@
     float: left;
     font-size: 14px;
     padding: 10px 25px;
-    color:#FFD700;
-    background:#1A237E;
+    color:#ffffff;
+    background:#ffd700;
     border-radius: 41px;
-    border: 2px solid #FFD700;
+    border:2px solid #edb928;
     margin-left: 81px;
     margin-right: 25px;
 }
 
 .menu-btn:hover {
-    background: #FFF8C6;
-    color: #0D2B4E;
+    background:#ffb300;
+    color:#ffffff;
+    border:2px solid #edb928;
     transition: all 0.2s ease;
 }
 
@@ -82,7 +94,7 @@
     left: 941px;
     width: 25%;
     height: 60%;
-    background: rgba(26, 35, 126, 0.95);
+    background:#ffb300;
     z-index: 1000;
 }
 
@@ -103,7 +115,7 @@
 
 #navbar li a {
     text-decoration: none;
-    color: #FFD700;
+    color: #eed966;
     font-size: 24px;
 }
 
@@ -116,24 +128,25 @@
     width: 15%;
     height: 80px;
     float: left;
-    padding-top: 16px;
+    padding-top: 35px;
     margin-left: auto;
 }
+
 .login_btn{
     display: inline-block;
     cursor: pointer;
      font-size:14px;
      text-decoration:none;
      padding:12px 20px; 
-     color:#FFD700;
-     background:#1A237E;
+     color:#ffffff;
+     background:#ffd700;
      border-radius:41px;
-     border:2px solid #FFD700;
+     border:2px solid #edb928;
     }
 .login_btn:hover{
-    background:#FFF8C6;
-    color:#0D2B4E;
-    border:2px solid #FFD700;
+    background:#ffb300;
+    color:#ffffff;
+    border:2px solid #edb928;
     transition: all 0.2s ease;
 }
 
