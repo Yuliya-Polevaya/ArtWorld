@@ -122,32 +122,6 @@ body {
     color: #FFF8C6;
 }
 
-/* Кнопка входа и регистрации */
-.registration{
-    width: 15%;
-    height: 80px;
-    float: left;
-    padding-top: 35px;
-    margin-left: auto;
-}
-.login_btn{
-    display: inline-block;
-    cursor: pointer;
-     font-size:14px;
-     text-decoration:none;
-     padding:12px 20px; 
-     color:#ffffff;
-     background:#ffd700;
-     border-radius:41px;
-     border:2px solid #edb928;
-    }
-.login_btn:hover{
-    background:#ffb300;
-    color:#ffffff;
-    border:2px solid #edb928;
-    transition: all 0.2s ease;
-}
-
 /* Сама страница */
 .content {
     width: 100%;
