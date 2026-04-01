@@ -73,3 +73,16 @@
 .footer a:hover{
     color:#FFF8C6;
 }
+
+
+    $user_name = $_GET['user_name'];
+    $email = $_GET['email'];
+    $password_hash = $_GET['password_hash'];
+    $profile_picture = $_GET['profile_picture'];
+
+    $stmt = $pdo->prepare("INSERT INTO users (user_name, email, password_hash, profile_picture) VALUES (?, ?, ?, ?)");
+    $stmt->bindParam(1, $user_name);
+    $stmt->bindParam(2, $email);
+    $stmt->bindParam(3, $password_hash);
+    $stmt->bindParam(4, $profile_picture);
+    $stmt->execute();

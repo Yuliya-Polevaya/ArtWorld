@@ -1,0 +1,122 @@
+-- Создание базы данных
+CREATE DATABASE IF NOT EXISTS `artworld`
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE `artworld`;
+
+-- =====================================================
+-- Таблица: artists (художники)
+-- =====================================================
+DROP TABLE IF EXISTS `artists`;
+CREATE TABLE `artists` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `art_name` VARCHAR(255) NOT NULL COMMENT 'имя художника',
+    `date_of_birth` DATE DEFAULT NULL COMMENT 'дата рождения',
+    `date_of_death` DATE DEFAULT NULL COMMENT 'дата смерти',
+    `country` VARCHAR(100) DEFAULT NULL COMMENT 'страна',
+    `biography` TEXT DEFAULT NULL COMMENT 'биография',
+    `photo_artist` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на фото художника',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='художники';
+
+-- =====================================================
+-- Таблица: collections (частные коллекции)
+-- =====================================================
+DROP TABLE IF EXISTS `collections`;
+CREATE TABLE `collections` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL COMMENT 'название коллекции',
+    `owner_name` VARCHAR(255) DEFAULT NULL COMMENT 'владелец',
+    `city` VARCHAR(100) DEFAULT NULL COMMENT 'город',
+    `country` VARCHAR(100) DEFAULT NULL COMMENT 'страна',
+    `description` TEXT DEFAULT NULL COMMENT 'описание коллекции',
+    `photo_collections` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на фото коллекции',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='частные коллекции';
+
+-- =====================================================
+-- Таблица: genres (жанры)
+-- =====================================================
+DROP TABLE IF EXISTS `genres`;
+CREATE TABLE `genres` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL COMMENT 'название жанра',
+    `description` TEXT DEFAULT NULL COMMENT 'описание жанра',
+    `photo_genres` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на фото жанра',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='жанры';
+
+-- =====================================================
+-- Таблица: museums (музеи)
+-- =====================================================
+DROP TABLE IF EXISTS `museums`;
+CREATE TABLE `museums` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL COMMENT 'название музея',
+    `city` VARCHAR(100) DEFAULT NULL COMMENT 'город',
+    `country` VARCHAR(100) DEFAULT NULL COMMENT 'страна',
+    `description` TEXT DEFAULT NULL COMMENT 'описание музея',
+    `photo_museums` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на фото музея',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='музеи';
+
+-- =====================================================
+-- Таблица: styles (стили)
+-- =====================================================
+DROP TABLE IF EXISTS `styles`;
+CREATE TABLE `styles` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL COMMENT 'название стиля',
+    `period` VARCHAR(100) DEFAULT NULL COMMENT 'период существования',
+    `description` TEXT DEFAULT NULL COMMENT 'описание стиля',
+    `photo_styles` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на фото стиля',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='стили';
+
+-- =====================================================
+-- Таблица: paintings (картины)
+-- =====================================================
+DROP TABLE IF EXISTS `paintings`;
+CREATE TABLE `paintings` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(255) NOT NULL COMMENT 'название картины',
+    `year_created` DATE DEFAULT NULL COMMENT 'дата создания',
+    `artist_id` INT NOT NULL COMMENT 'автор (FK → artists.id)',
+    `genre_id` INT DEFAULT NULL COMMENT 'жанр (FK → genres.id)',
+    `style_id` INT DEFAULT NULL COMMENT 'стиль (FK → styles.id)',
+    `description` TEXT DEFAULT NULL COMMENT 'описание картины',
+    `height_cm` DECIMAL(10,2) DEFAULT NULL COMMENT 'высота в см',
+    `width_cm` DECIMAL(10,2) DEFAULT NULL COMMENT 'ширина в см',
+    `material` VARCHAR(100) DEFAULT NULL COMMENT 'материал',
+    `technique` VARCHAR(100) DEFAULT NULL COMMENT 'техника',
+    `current_museum_id` INT DEFAULT NULL COMMENT 'музей (FK → museums.id)',
+    `current_collection_id` INT DEFAULT NULL COMMENT 'частная коллекция (FK → collections.id)',
+    `picture` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на изображение',
+    PRIMARY KEY (`id`),
+    KEY `idx_artist_id` (`artist_id`),
+    KEY `idx_genre_id` (`genre_id`),
+    KEY `idx_style_id` (`style_id`),
+    KEY `idx_museum_id` (`current_museum_id`),
+    KEY `idx_collection_id` (`current_collection_id`),
+    CONSTRAINT `fk_paintings_artist` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk_paintings_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT `fk_paintings_style` FOREIGN KEY (`style_id`) REFERENCES `styles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT `fk_paintings_museum` FOREIGN KEY (`current_museum_id`) REFERENCES `museums` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT `fk_paintings_collection` FOREIGN KEY (`current_collection_id`) REFERENCES `collections` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='картины';
+
+-- =====================================================
+-- Таблица: users (пользователи)
+-- =====================================================
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `user_name` VARCHAR(100) NOT NULL COMMENT 'имя пользователя',
+    `email` VARCHAR(255) NOT NULL COMMENT 'email',
+    `password_hash` VARCHAR(255) NOT NULL COMMENT 'пароль',
+    `profile_picture` VARCHAR(255) DEFAULT NULL COMMENT 'ссылка на аватар',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_email` (`email`),
+    UNIQUE KEY `uk_user_name` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='пользователи';

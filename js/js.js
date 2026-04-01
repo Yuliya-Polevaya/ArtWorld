@@ -26,3 +26,4 @@ popupMenu.onclick = function(event) {
         popupMenu.classList.remove('open');
     }
 }
+
