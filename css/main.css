@@ -21,7 +21,6 @@
     height: 80px;
     display: flex;
     padding: 0px;
-    align-items: center;
     margin-top: -2269px;
 }
 
@@ -29,7 +28,6 @@
 .logo{
     width: 30%;
     height: 80px;
-    display: flex;
 }
 .logo img{
     width: 100%;
@@ -47,6 +45,7 @@
     background: white;
     border-radius: 30px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .search-input {
@@ -75,13 +74,14 @@
 .menu-btn {
     float: left;
     font-size: 14px;
-    padding: 10px 25px;
+    padding: 10px 115px;
     color:#ffffff;
     background:#ffd700;
     border-radius: 41px;
     border:2px solid #edb928;
     margin-left: 81px;
     margin-right: 25px;
+    margin-top: 20px;
 }
 
 .menu-btn:hover {
@@ -95,7 +95,7 @@
     display: none;
     position: fixed;
     top: 70px;
-    left: 941px;
+    left: 1030px;
     width: 25%;
     height: 60%;
     background:#ffb300;

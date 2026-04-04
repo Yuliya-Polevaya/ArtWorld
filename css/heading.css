@@ -17,7 +17,6 @@ body {
     height: 80px;
     display: flex;
     padding: 0px;
-    align-items: center;
 }
 
 /* Логотип */
@@ -42,11 +41,12 @@ body {
     background: white;
     border-radius: 30px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .search-input {
     flex: 1;
-    height: 40px;
+    height: 42px;
     border: none;
     padding: 0 20px;
     font-size: 14px;
@@ -55,7 +55,7 @@ body {
 
 .search-button {
     width: 45px;
-    height: 40px;
+    height: 42px;
     background: #FFD700;
     border: none;
     color: #1A237E;
@@ -70,13 +70,14 @@ body {
 .menu-btn {
     float: left;
     font-size: 14px;
-    padding: 10px 25px;
+    padding: 12px 115px;
     color:#ffffff;
     background:#ffd700;
     border-radius: 41px;
     border:2px solid #edb928;
     margin-left: 81px;
     margin-right: 25px;
+    margin-top: 20px;
 }
 
 .menu-btn:hover {
@@ -90,7 +91,7 @@ body {
     display: none;
     position: fixed;
     top: 70px;
-    left: 941px;
+    left: 1030px;
     width: 25%;
     height: 60%;
     background:#ffb300;
@@ -165,7 +166,12 @@ body {
     height:200px; 
     object-fit:cover; 
     border-radius:8px; 
-} 
+}
+
+.phot p {
+    margin-top: 5px;
+    color: #FFD700;
+}
 
 /* Хутер */
 .footer{
