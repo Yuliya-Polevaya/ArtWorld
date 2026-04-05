@@ -1,6 +1,4 @@
 <?php
-// Взаимодействие с front
-
 include_once "pdo.php";
 
 $db = new DB();
@@ -8,16 +6,30 @@ $pdo = $db->connect();
 
 if($_POST !== null){
 
-//        $nickname = $_POST['nickname'];
-//        $pass = $_POST['pass'];
+    // messages
+    $mail_client = "mail_client";
+    $message = "message";
 
-    $nickname = "nickname";
-    $pass = "pass";
+    $stmt = $pdo->prepare("INSERT INTO messages (mail_client, message) VALUES (?, ?)");
+    $stmt->bindParam(1, $mail_client);
+    $stmt->bindParam(2, $message);
+    $stmt->execute();
 
-        $stmt = $pdo->prepare("INSERT INTO regbasa (nickname, pass) VALUES (?, ?)");
-        $stmt->bindParam(1, $nickname);
-        $stmt->bindParam(2, $pass);
-        $stmt->execute();
-}else{
+    // mailing
+    $name = "name";
+    $telephone = "telephone";
+    $email = "email";
+    $frequency = "frequency";
+    $interesting = "interesting";
+
+    $stmt = $pdo->prepare("INSERT INTO mailing (name, telephone, email, frequency, interesting) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $telephone);
+    $stmt->bindParam(3, $email);
+    $stmt->bindParam(4, $frequency);
+    $stmt->bindParam(5, $interesting);
+    $stmt->execute();
+
+} else {
     return false;
 }

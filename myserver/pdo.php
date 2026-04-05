@@ -10,7 +10,7 @@ class DB extends PDO {
     private $user;
     private $pass;
     private $charset;
-    public function __construct($host = '127.0.0.1', $db = 'test', $user = 'root', $pass = '',$charset = 'utf8') {
+    public function __construct($host = '127.0.0.1', $db = 'artworld', $user = 'root', $pass = '',$charset = 'utf8') {
         $this->host = $host;
         $this->db = $db;
         $this->user = $user;
