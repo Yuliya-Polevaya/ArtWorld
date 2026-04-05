@@ -26,3 +26,67 @@ body {
     border:2px solid #edb928;
     transition: all 0.2s ease;
 }
+
+.fon{
+    width: 1000px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,215,0,0.3);
+    backdrop-filter: blur(6px);
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.fon h1 {
+    color: #FFD700;
+    margin-bottom: 10px;
+    text-align:center;
+    font-size:42px;
+}
+
+.blok {
+    display: flex;
+    gap: 30px;
+}
+
+#photo_genres{
+    width: 600px; 
+    height: auto;
+}
+
+.photo_artist img,
+.photo_collections img,
+.photo_museums img,
+.picture img,
+.photo_stylesim img {
+    width: 400px; 
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    max-width: 100%;
+}
+
+.info{
+    display: block;
+}
+
+.info h3{
+    color: #FFD700;
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.info p{
+    color: #FFD700;
+}
+
+.description,
+.biography {
+    text-align: center;
+}
+
+.description p,
+.biography p {
+    color: #FFD700;
+}

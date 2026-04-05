@@ -5,30 +5,25 @@ $db = new DB();
 $pdo = $db->connect();
 
 if ($_GET !== null) {
-
     // artists
     $stmt = $pdo->prepare("SELECT * FROM artists");
     $stmt->execute();
     $artists = $stmt->fetchAll();
-    print_r($artists);
 
     // collections
     $stmt = $pdo->prepare("SELECT * FROM collections");
     $stmt->execute();
     $collections = $stmt->fetchAll();
-    print_r($collections);
 
     // genres
     $stmt = $pdo->prepare("SELECT * FROM genres");
     $stmt->execute();
     $genres = $stmt->fetchAll();
-    print_r($genres);
 
     // museums
     $stmt = $pdo->prepare("SELECT * FROM museums");
     $stmt->execute();
     $museums = $stmt->fetchAll();
-    print_r($museums);
 
     // paintings
     $stmt = $pdo->prepare("
@@ -36,7 +31,7 @@ if ($_GET !== null) {
             paintings.id AS paintings_id,
             paintings.title AS paintings_title,
             paintings.year_created AS paintings_year_created,
-            artists.name AS artists_name,
+            artists.art_name AS artists_name,
             genres.name AS genres_name,
             styles.name AS styles_name,
             paintings.description AS paintings_description,
@@ -61,7 +56,17 @@ if ($_GET !== null) {
     $stmt = $pdo->prepare("SELECT * FROM styles");
     $stmt->execute();
     $styles = $stmt->fetchAll();
-    print_r($styles);
+
+    $all = [
+        "artists" => $artists,
+        "collections" => $collections,
+        "genres" => $genres,
+        "museums" => $museums,
+        "paintings" => $paintings,
+        "styles" => $styles
+    ];
+
+    echo json_encode($all);
 
 } else {
     return false;
