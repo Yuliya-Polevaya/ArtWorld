@@ -1,0 +1,67 @@
+@keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-130%);
+    }
+}
+
+.text-card1, .text-card2, .text-card3, .text-card4 {
+    width: 70%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,215,0,0.3);
+    backdrop-filter: blur(6px);
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 10px;
+    text-align: left;
+}
+
+#main-title{
+    text-align:center;
+    color:#FFD700;
+    margin-top:40px;
+    margin-bottom:10px;
+}
+
+.xyd, .myz, .chas, .stil {
+    width: 70%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,215,0,0.3);
+    backdrop-filter: blur(6px);
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 10px;
+    text-align: center;
+    color: #FFD700;
+}
+
+.xyd h1, .myz h1, .chas h1, .stil h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.xyd p, .myz p, .chas p, .stil p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.iksweb{
+    display: inline-block;
+    cursor: pointer;
+    font-size:14px;
+    text-decoration:none;
+    padding:10px 20px;
+    color:#ffffff;
+    background:#ffd700;
+    border-radius:12px;
+    border:2px solid #edb928;
+    }
+.iksweb:hover{
+    background:#ffb300;
+    color:#ffffff;
+    border:2px solid #edb928;
+    transition: all 0.2s ease;
+}

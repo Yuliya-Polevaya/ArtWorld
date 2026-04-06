@@ -28,7 +28,7 @@ body {
 }
 
 .fon{
-    width: 1000px;
+    width: 80%;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,215,0,0.3);
     backdrop-filter: blur(6px);
@@ -42,29 +42,54 @@ body {
     color: #FFD700;
     margin-bottom: 10px;
     text-align:center;
-    font-size:42px;
+    font-size:30px;
 }
 
 .blok {
     display: flex;
     gap: 30px;
+    justify-content: center;
 }
 
-#photo_genres{
-    width: 600px; 
+#photo_genres {
+    width: 80%;
     height: auto;
+    box-sizing: border-box; 
+    overflow: hidden;       
+    margin: 0 auto;         
 }
 
+/* Картинка внутри блока */
+#photo_genres img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+}
+
+.photo_artist,
+.photo_collections,
+.photo_museums,
+.picture,
+.photo_styles {
+    width: 50%;                
+    border-radius: 10px;
+}
+
+/* Изображения внутри блоков */
 .photo_artist img,
 .photo_collections img,
 .photo_museums img,
 .picture img,
-.photo_stylesim img {
-    width: 400px; 
-    height: auto;
+.photo_styles img 
+.photo_genres img{
+    width: 100%;     
+    height: auto;  
+    display: block;
     border-radius: 10px;
     border: 2px solid #FFD700;
-    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .info{
