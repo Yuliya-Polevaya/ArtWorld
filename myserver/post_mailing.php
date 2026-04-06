@@ -6,21 +6,12 @@ $pdo = $db->connect();
 
 if($_POST !== null){
 
-    // messages
-    $mail_client = "mail_client";
-    $message = "message";
-
-    $stmt = $pdo->prepare("INSERT INTO messages (mail_client, message) VALUES (?, ?)");
-    $stmt->bindParam(1, $mail_client);
-    $stmt->bindParam(2, $message);
-    $stmt->execute();
-
     // mailing
-    $name = "name";
-    $telephone = "telephone";
-    $email = "email";
-    $frequency = "frequency";
-    $interesting = "interesting";
+    $name = $_POST['name'];
+    $telephone = $_POST['telephone'];
+    $email = $_POST['email'];
+    $frequency = $_POST['frequency'];
+    $interesting = $_POST['interesting'];
 
     $stmt = $pdo->prepare("INSERT INTO mailing (name, telephone, email, frequency, interesting) VALUES (?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $name);

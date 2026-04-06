@@ -1,6 +1,4 @@
-glav{
-    font-size:30px;
-}
+
 @keyframes scrolling {
     0% {
       transform: translateX(0);
@@ -21,9 +19,11 @@ glav{
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    background: rgba(20,30,70,0.7);
-    cursor: pointer;
     transition: transform 0.3s ease;
+}
+
+.paintings_card:hover {
+    transform: scale(1.05);
 }
 
 .paintings_card img {

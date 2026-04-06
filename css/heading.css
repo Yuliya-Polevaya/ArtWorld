@@ -177,10 +177,9 @@ body {
 .footer{
     width:100%;
     margin-top:35px;
-    padding:30px;
+    margin-bottom: 35px;
     text-align:center;
     color:#FFD700;
-    z-index: 2;
 }
 
 .footer a{

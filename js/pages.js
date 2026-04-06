@@ -1,282 +1,370 @@
-// main.js
-
 async function fetchData() {
     const response = await fetch("http://localhost/ArtWorld/myserver/get.php");
     return await response.json();
 }
 
 // ------------------ Художники ------------------
-async function loadArtists(data) {
+function loadArtists(data) {
     const container = document.querySelector(".artists");
-    if (!container || !data.artists) return;
-    container.innerHTML = "";
 
-    data.artists.forEach(a => {
-        const card = document.createElement("div");
-        card.className = "artists_card";
-        card.dataset.id = a.id;
+    if (container && data.artists) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${a.photo_artist || 'default_artist.jpg'}" alt="${a.art_name}">
-            <div class="card_body">
-                <h3 class="card_art_name">${a.art_name}</h3>
-                <p class="card_country">${a.country || "-"}</p>
-            </div>
-        `;
+        data.artists.forEach(a => {
+            const card = document.createElement("div");
+            card.className = "artists_card";
+            card.dataset.id = a.id;
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("artistId", a.id);
-            window.location.href = "artist.html";
+            card.innerHTML = `
+                <img src="${a.photo_artist || 'default_artist.jpg'}">
+                <div class="card_body">
+                    <h3>${a.art_name}</h3>
+                    <p>${a.country || "-"}</p>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("artistId", a.id);
+                window.location.href = "artist.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
-
-    // Страница artist.html
     const artistId = localStorage.getItem("artistId");
-    if (!artistId) return;
-    const artist = data.artists.find(a => a.id == artistId);
-    if (!artist) return;
+    if (artistId && data.artists) {
+        const artist = data.artists.find(a => a.id == artistId);
+        if (!artist) return;
 
-    const artNameEl = document.getElementById("art_name");
-    if (artNameEl) artNameEl.textContent = artist.art_name;
-    const imgEl = document.querySelector(".photo_artist img");
-    if (imgEl) imgEl.src = artist.photo_artist || 'default_artist.jpg';
+        if (document.getElementById("art_name"))
+            document.getElementById("art_name").textContent = artist.art_name;
 
-    document.querySelectorAll(".info .art_name p").forEach(el => el.textContent = artist.art_name);
-    document.querySelectorAll(".info .date_of_birth p").forEach(el => el.textContent = artist.date_of_birth || "-");
-    document.querySelectorAll(".info .date_of_death p").forEach(el => el.textContent = artist.date_of_death || "-");
-    document.querySelectorAll(".info .country p").forEach(el => el.textContent = artist.country || "-");
-    const bioEl = document.querySelector(".biography p");
-    if (bioEl) bioEl.textContent = artist.biography || "-";
+        const img = document.querySelector(".photo_artist img");
+        if (img) img.src = artist.photo_artist || 'default_artist.jpg';
+
+        document.querySelectorAll(".info .art_name p").forEach(el => el.textContent = artist.art_name);
+        document.querySelectorAll(".info .date_of_birth p").forEach(el => el.textContent = artist.date_of_birth || "-");
+        document.querySelectorAll(".info .date_of_death p").forEach(el => el.textContent = artist.date_of_death || "-");
+        document.querySelectorAll(".info .country p").forEach(el => el.textContent = artist.country || "-");
+
+        const bio = document.querySelector(".biography p");
+        if (bio) bio.textContent = artist.biography || "-";
+    }
 }
 
-// ------------------ Галерея картин ------------------
-async function loadPaintings(data) {
+// ------------------ Картины ------------------
+function loadPaintings(data) {
     const container = document.querySelector(".paintings");
-    if (!container || !data.paintings) return;
-    container.innerHTML = "";
 
-    data.paintings.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "paintings_card";
+    if (container && data.paintings) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${p.paintings_picture || 'default_paint.jpg'}" alt="${p.paintings_title}">
-            <div class="card_body">
-                <h3 class="card_title">${p.paintings_title}</h3>
-                <p class="card_artist">${p.artists_name || "-"}</p>
-            </div>
-        `;
+        data.paintings.forEach(p => {
+            const card = document.createElement("div");
+            card.className = "paintings_card";
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("paintId", p.paintings_id);
-            window.location.href = "picture.html";
+            card.innerHTML = `
+                <img src="${p.paintings_picture || 'default_paint.jpg'}">
+                <div class="card_body">
+                    <h3>${p.paintings_title}</h3>
+                    <p>${p.artists_name || "-"}</p>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("paintId", p.paintings_id);
+                window.location.href = "picture.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
+    const id = localStorage.getItem("paintId");
+    if (id && data.paintings) {
+        const p = data.paintings.find(x => x.paintings_id == id);
+        if (!p) return;
 
-    // Страница picture.html
-    const paintId = localStorage.getItem("paintId");
-    if (!paintId) return;
-    const paint = data.paintings.find(p => p.paintings_id == paintId);
-    if (!paint) return;
+        if (document.getElementById("title"))
+            document.getElementById("title").textContent = p.paintings_title;
 
-    const titleEl = document.getElementById("title");
-    if (titleEl) titleEl.textContent = paint.paintings_title;
-    const imgEl = document.querySelector(".picture img");
-    if (imgEl) imgEl.src = paint.paintings_picture || 'default_paint.jpg';
+        const img = document.querySelector(".picture img");
+        if (img) img.src = p.paintings_picture || 'default_paint.jpg';
 
-    document.querySelectorAll(".info .title p").forEach(el => el.textContent = paint.paintings_title);
-    document.querySelectorAll(".info .year_created p").forEach(el => el.textContent = paint.paintings_year_created || "-");
-    document.querySelectorAll(".info .artist_id p").forEach(el => el.textContent = paint.artists_name || "-");
-    document.querySelectorAll(".info .genre_id p").forEach(el => el.textContent = paint.genres_name || "-");
-    document.querySelectorAll(".info .style_id p").forEach(el => el.textContent = paint.styles_name || "-");
-    document.querySelectorAll(".info .height_cm p").forEach(el => el.textContent = paint.paintings_height_cm || "-");
-    document.querySelectorAll(".info .width_cm p").forEach(el => el.textContent = paint.paintings_width_cm || "-");
-    document.querySelectorAll(".info .material p").forEach(el => el.textContent = paint.paintings_material || "-");
-    document.querySelectorAll(".info .technique p").forEach(el => el.textContent = paint.paintings_technique || "-");
-    document.querySelectorAll(".info .current_museum_id p").forEach(el => el.textContent = paint.museums_name || "-");
-    document.querySelectorAll(".info .current_collection_id p").forEach(el => el.textContent = paint.collections_name || "-");
-    const descEl = document.querySelector(".description p");
-    if (descEl) descEl.textContent = paint.paintings_description || "-";
+        document.querySelectorAll(".info .title p").forEach(el => el.textContent = p.paintings_title);
+        document.querySelectorAll(".info .year_created p").forEach(el => el.textContent = p.paintings_year_created || "-");
+        document.querySelectorAll(".info .artist_id p").forEach(el => el.textContent = p.artists_name || "-");
+        document.querySelectorAll(".info .genre_id p").forEach(el => el.textContent = p.genres_name || "-");
+        document.querySelectorAll(".info .style_id p").forEach(el => el.textContent = p.styles_name || "-");
+        document.querySelectorAll(".info .height_cm p").forEach(el => el.textContent = p.paintings_height_cm || "-");
+        document.querySelectorAll(".info .width_cm p").forEach(el => el.textContent = p.paintings_width_cm || "-");
+        document.querySelectorAll(".info .material p").forEach(el => el.textContent = p.paintings_material || "-");
+        document.querySelectorAll(".info .technique p").forEach(el => el.textContent = p.paintings_technique || "-");
+        document.querySelectorAll(".info .current_museum_id p").forEach(el => el.textContent = p.museums_name || "-");
+        document.querySelectorAll(".info .current_collection_id p").forEach(el => el.textContent = p.collections_name || "-");
+
+        const desc = document.querySelector(".description p");
+        if (desc) desc.textContent = p.paintings_description || "-";
+    }
 }
 
 // ------------------ Стили ------------------
-async function loadStyles(data) {
+function loadStyles(data) {
     const container = document.querySelector(".styles");
-    if (!container || !data.styles) return;
-    container.innerHTML = "";
 
-    data.styles.forEach(s => {
-        const card = document.createElement("div");
-        card.className = "styles_card";
+    if (container && data.styles) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${s.photo_styles || 'default_style.jpg'}" alt="${s.name}">
-            <div class="card_body">
-                <h3>${s.name}</h3>
-            </div>
-        `;
+        data.styles.forEach(s => {
+            const card = document.createElement("div");
+            card.className = "styles_card";
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("styleId", s.id);
-            window.location.href = "style.html";
+            card.innerHTML = `
+                <img src="${s.photo_styles || 'default_style.jpg'}">
+                <div class="card_body">
+                    <h3>${s.name}</h3>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("styleId", s.id);
+                window.location.href = "style.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
+    const id = localStorage.getItem("styleId");
+    if (id && data.styles) {
+        const s = data.styles.find(x => x.id == id);
+        if (!s) return;
 
-    const styleId = localStorage.getItem("styleId");
-    if (!styleId) return;
-    const style = data.styles.find(s => s.id == styleId);
-    if (!style) return;
+        if (document.getElementById("name"))
+            document.getElementById("name").textContent = s.name;
 
-    const nameEl = document.getElementById("name");
-    if (nameEl) nameEl.textContent = style.name;
-    const imgEl = document.querySelector(".photo_styles img");
-    if (imgEl) imgEl.src = style.photo_styles || 'default_style.jpg';
+        const img = document.querySelector(".photo_styles img");
+        if (img) img.src = s.photo_styles || 'default_style.jpg';
 
-    document.querySelectorAll(".info .name p").forEach(el => el.textContent = style.name);
-    document.querySelectorAll(".info .period p").forEach(el => el.textContent = style.period || "-");
-    const descEl = document.querySelector(".description p");
-    if (descEl) descEl.textContent = style.description || "-";
+        document.querySelectorAll(".info .name p").forEach(el => el.textContent = s.name);
+        document.querySelectorAll(".info .period p").forEach(el => el.textContent = s.period || "-");
+
+        const desc = document.querySelector(".description p");
+        if (desc) desc.textContent = s.description || "-";
+    }
 }
 
 // ------------------ Музеи ------------------
-async function loadMuseums(data) {
+function loadMuseums(data) {
     const container = document.querySelector(".museums");
-    if (!container || !data.museums) return;
-    container.innerHTML = "";
 
-    data.museums.forEach(m => {
-        const card = document.createElement("div");
-        card.className = "museums_card";
+    if (container && data.museums) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${m.photo_museums || 'default_museum.jpg'}" alt="${m.name}">
-            <div class="card_body">
-                <h3>${m.name}</h3>
-                <p>${m.city || "-"}, ${m.country || "-"}</p>
-            </div>
-        `;
+        data.museums.forEach(m => {
+            const card = document.createElement("div");
+            card.className = "museums_card";
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("museumId", m.id);
-            window.location.href = "museum.html";
+            card.innerHTML = `
+                <img src="${m.photo_museums || 'default_museum.jpg'}">
+                <div class="card_body">
+                    <h3>${m.name}</h3>
+                    <p>${m.city || "-"}, ${m.country || "-"}</p>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("museumId", m.id);
+                window.location.href = "museum.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
+    const id = localStorage.getItem("museumId");
+    if (id && data.museums) {
+        const m = data.museums.find(x => x.id == id);
+        if (!m) return;
 
-    const museumId = localStorage.getItem("museumId");
-    if (!museumId) return;
-    const museum = data.museums.find(m => m.id == museumId);
-    if (!museum) return;
+        if (document.getElementById("name"))
+            document.getElementById("name").textContent = m.name;
 
-    const nameEl = document.getElementById("name");
-    if (nameEl) nameEl.textContent = museum.name;
-    const imgEl = document.querySelector(".photo_museums img");
-    if (imgEl) imgEl.src = museum.photo_museums || 'default_museum.jpg';
+        const img = document.querySelector(".photo_museums img");
+        if (img) img.src = m.photo_museums || 'default_museum.jpg';
 
-    document.querySelectorAll(".info .name p").forEach(el => el.textContent = museum.name);
-    document.querySelectorAll(".info .city p").forEach(el => el.textContent = museum.city || "-");
-    document.querySelectorAll(".info .country p").forEach(el => el.textContent = museum.country || "-");
-    const descEl = document.querySelector(".description p");
-    if (descEl) descEl.textContent = museum.description || "-";
+        document.querySelectorAll(".info .name p").forEach(el => el.textContent = m.name);
+        document.querySelectorAll(".info .city p").forEach(el => el.textContent = m.city || "-");
+        document.querySelectorAll(".info .country p").forEach(el => el.textContent = m.country || "-");
+
+        const desc = document.querySelector(".description p");
+        if (desc) desc.textContent = m.description || "-";
+    }
 }
 
 // ------------------ Жанры ------------------
-async function loadGenres(data) {
+function loadGenres(data) {
     const container = document.querySelector(".genres");
-    if (!container || !data.genres) return;
-    container.innerHTML = "";
 
-    data.genres.forEach(g => {
-        const card = document.createElement("div");
-        card.className = "genres_card";
+    if (container && data.genres) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${g.photo_genres || 'default_genre.jpg'}" alt="${g.name}">
-            <div class="card_body">
-                <h3>${g.name}</h3>
-            </div>
-        `;
+        data.genres.forEach(g => {
+            const card = document.createElement("div");
+            card.className = "genres_card";
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("genreId", g.id);
-            window.location.href = "genre.html";
+            card.innerHTML = `
+                <img src="${g.photo_genres || 'default_genre.jpg'}">
+                <div class="card_body">
+                    <h3>${g.name}</h3>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("genreId", g.id);
+                window.location.href = "genre.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
+    const id = localStorage.getItem("genreId");
+    if (id && data.genres) {
+        const g = data.genres.find(x => x.id == id);
+        if (!g) return;
 
-    const genreId = localStorage.getItem("genreId");
-    if (!genreId) return;
-    const genre = data.genres.find(g => g.id == genreId);
-    if (!genre) return;
+        if (document.getElementById("name"))
+            document.getElementById("name").textContent = g.name;
 
-    const nameEl = document.getElementById("name");
-    if (nameEl) nameEl.textContent = genre.name;
-    const imgEl = document.querySelector(".photo_genres img");
-    if (imgEl) imgEl.src = genre.photo_genres || 'default_genre.jpg';
+        const img = document.querySelector(".photo_genres img");
+        if (img) img.src = g.photo_genres || 'default_genre.jpg';
 
-    const descEl = document.querySelector(".description p");
-    if (descEl) descEl.textContent = genre.description || "-";
+        const desc = document.querySelector(".description p");
+        if (desc) desc.textContent = g.description || "-";
+    }
 }
 
-// ------------------ Частные коллекции ------------------
-async function loadCollections(data) {
+// ------------------ Коллекции ------------------
+function loadCollections(data) {
     const container = document.querySelector(".private_collection");
-    if (!container || !data.collections) return;
-    container.innerHTML = "";
 
-    data.collections.forEach(c => {
-        const card = document.createElement("div");
-        card.className = "private_collection_card";
+    if (container && data.collections) {
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <img src="${c.photo_collections || 'default_collection.jpg'}" alt="${c.name}">
-            <div class="card_body">
-                <h3 class="card_name">${c.name}</h3>
-                <p class="card_owner_name">${c.owner_name || "-"}</p>
-            </div>
-        `;
+        data.collections.forEach(c => {
+            const card = document.createElement("div");
+            card.className = "private_collection_card";
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("collectionId", c.id);
-            window.location.href = "collection.html";
+            card.innerHTML = `
+                <img src="${c.photo_collections || 'default_collection.jpg'}">
+                <div class="card_body">
+                    <h3>${c.name}</h3>
+                    <p>${c.owner_name || "-"}</p>
+                </div>
+            `;
+
+            card.onclick = () => {
+                localStorage.setItem("collectionId", c.id);
+                window.location.href = "collection.html";
+            };
+
+            container.appendChild(card);
         });
+    }
 
-        container.appendChild(card);
-    });
+    const id = localStorage.getItem("collectionId");
+    if (id && data.collections) {
+        const c = data.collections.find(x => x.id == id);
+        if (!c) return;
 
-    const collectionId = localStorage.getItem("collectionId");
-    if (!collectionId) return;
-    const col = data.collections.find(c => c.id == collectionId);
-    if (!col) return;
+        if (document.getElementById("name"))
+            document.getElementById("name").textContent = c.name;
 
-    const nameEl = document.getElementById("name");
-    if (nameEl) nameEl.textContent = col.name;
-    const imgEl = document.querySelector(".photo_collections img");
-    if (imgEl) imgEl.src = col.photo_collections || 'default_collection.jpg';
+        const img = document.querySelector(".photo_collections img");
+        if (img) img.src = c.photo_collections || 'default_collection.jpg';
 
-    document.querySelectorAll(".info .name p").forEach(el => el.textContent = col.name);
-    document.querySelectorAll(".info .owner_name p").forEach(el => el.textContent = col.owner_name || "-");
-    document.querySelectorAll(".info .city p").forEach(el => el.textContent = col.city || "-");
-    document.querySelectorAll(".info .country p").forEach(el => el.textContent = col.country || "-");
-    const descEl = document.querySelector(".description p");
-    if (descEl) descEl.textContent = col.description || "-";
+        document.querySelectorAll(".info .name p").forEach(el => el.textContent = c.name);
+        document.querySelectorAll(".info .owner_name p").forEach(el => el.textContent = c.owner_name || "-");
+        document.querySelectorAll(".info .city p").forEach(el => el.textContent = c.city || "-");
+        document.querySelectorAll(".info .country p").forEach(el => el.textContent = c.country || "-");
+
+        const desc = document.querySelector(".description p");
+        if (desc) desc.textContent = c.description || "-";
+    }
 }
 
-// ------------------ Вызов всех функций ------------------
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await fetchData();
+
     loadArtists(data);
     loadPaintings(data);
     loadStyles(data);
     loadMuseums(data);
     loadGenres(data);
     loadCollections(data);
+});
+
+// Сообщения
+document.getElementById("contactForm").addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const mail_client = document.getElementById("mail_client").value;
+    
+    const formData = new FormData();
+    formData.append("mail_client", document.getElementById("mail_client").value);
+    formData.append("message", document.getElementById("message").value);
+
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(mail_client)) {
+        alert("Неправильный email!");
+        return;
+    }
+
+    await fetch("http://localhost/ArtWorld/myserver/post_message.php", {
+        method: "POST",
+        body: formData
+    });
+
+    alert("Сообщение отправлено!");
+    document.getElementById("contactForm").reset();
+});
+
+// Подписка
+document.getElementById("subscribeForm").addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const sub_name = document.getElementById("sub_name").value;
+    const telephone = document.getElementById("sub_telephone").value;
+    const email = document.getElementById("sub_email").value;
+
+    const formData = new FormData();
+    formData.append("name", document.getElementById("sub_name").value);
+    formData.append("telephone", document.getElementById("sub_telephone").value);
+    formData.append("email", document.getElementById("sub_email").value);
+    formData.append("frequency", document.querySelector('input[name="frequency"]:checked')?.value || "");
+    formData.append("interesting", document.getElementById("interesting").value);
+
+    if (!/^[А-Я][а-я]+ [А-Я][а-я]+ [А-Я][а-я]+$/.test(sub_name)) {
+        alert("ФИО должно быть в формате: Иванов Иван Иванович");
+        return;
+    }
+
+    if (!/^\+7 \d{3}-\d{3}-\d{2}-\d{2}$/.test(telephone)) {
+        alert("Неправильный номер телефона!");
+        return;
+    }
+
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        alert("Неправильный email!");
+        return;
+    }
+
+    await fetch("http://localhost/ArtWorld/myserver/post_mailing", {
+        method: "POST",
+        body: formData
+    });
+
+    alert("Вы подписались на рассылку!");
+    e.target.reset();
 });

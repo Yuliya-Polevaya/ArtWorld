@@ -18,97 +18,88 @@
         <h1 class="main-title">Контакты</h1>
 
         <!-- Форма обратной связи -->
-        <div class="info contact-card">
-            <h3>Напишите нам:</h3>
+<div class="info contact-card">
+    <h3>Напишите нам:</h3>
 
-            <form>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input 
-                        type="email" 
-                        class="form-control" 
-                        id="exampleFormControlInput1" 
-                        placeholder="artworld_official@mail.ru"
-                    >
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"> Ваш Email</label>
-                    <input 
-                        type="email" 
-                        class="form-control" 
-                        id="exampleFormControlInput1" 
-                        placeholder="artworld_official@mail.ru"
-                    >
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Сообщение</label>
-                    <textarea 
-                        class="form-control" 
-                        id="exampleFormControlTextarea1" 
-                        rows="5" 
-                        placeholder="Ваше сообщение..."
-                    ></textarea>
-                </div>
-
-                <button type="submit" class="iksweb">Отправить</button>
-            </form>
+    <form id="contactForm">
+        <div class="mb-3">
+            <label for="mail_client" class="form-label">Ваш Email</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="mail_client" 
+                placeholder="artworld_official@mail.ru"
+                required
+            >
         </div>
 
-        <div class="info">
-            <!-- Подписка на новые картины -->
-            <h3>Подписка на новые картины</h3>
-
-            <form>
-                <!-- Имя -->
-                <div class="mb-3">
-                    <label class="form-label">Ваше имя</label>
-                    <input type="text" class="form-control" placeholder="Введите имя">
-                </div>
-
-                <!-- Телефон -->
-                <div class="mb-3">
-                    <label class="form-label">Номер телефона</label>
-                    <input type="number" class="form-control" placeholder="+7...">
-                </div>
-
-                <!-- Email -->
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" placeholder="example@mail.com">
-                </div>
-
-                <!-- Как часто получать уведомления -->
-                <div class="mb-3">
-                    <label class="form-label">Как часто присылать обновления?</label><br>
-
-                    <input type="radio" name="freq"> Раз в неделю<br>
-                    <input type="radio" name="freq"> Раз в месяц<br>
-                    <input type="radio" name="freq"> Только важное<br>
-                </div>
-
-                <!-- Интересы -->
-                <div class="mb-3">
-                    <label class="form-label">Что вам интересно?</label>
-                    <select class="form-control">
-                        <option>Известные картины</option>
-                        <option>Современное искусство</option>
-                        <option>Художники</option>
-                        <option>Музеи</option>
-                    </select>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="mb-3">
-                    <input type="checkbox">
-                    <label>Согласен получать рассылку</label>
-                </div>
-
-                <button type="submit" class="iksweb">Подписаться</button>
-
-            </form>
+        <div class="mb-3">
+            <label for="message" class="form-label">Сообщение</label>
+            <textarea 
+                class="form-control" 
+                id="message" 
+                rows="5" 
+                placeholder="Ваше сообщение..."
+                required
+            ></textarea>
         </div>
+
+        <button type="submit" class="iksweb">Отправить</button>
+    </form>
+</div>
+
+<div class="info">
+    <!-- Подписка на новые картины -->
+    <h3>Подписка на новые картины</h3>
+
+    <form id="subscribeForm">
+        <!-- Имя -->
+        <div class="mb-3">
+            <label for="sub_name" class="form-label">Ваше ФИО</label>
+            <input type="text" class="form-control" id="sub_name" placeholder="Введите ФИО" required>
+        </div>
+
+        <!-- Телефон -->
+        <div class="mb-3">
+            <label for="sub_telephone" class="form-label">Номер телефона</label>
+            <input type="tel" class="form-control" id="sub_telephone" placeholder="+7 (900) 888-77-77" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="sub_email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="sub_email" placeholder="example@mail.com" required>
+        </div>
+
+        <!-- Как часто получать уведомления -->
+        <div class="mb-3">
+            <label class="form-label">Как часто присылать обновления?</label><br>
+
+            <input type="radio" name="frequency" value="Раз в неделю"> Раз в неделю<br>
+            <input type="radio" name="frequency" value="Раз в месяц"> Раз в месяц<br>
+            <input type="radio" name="frequency" value="Только важное"> Только важное<br>
+        </div>
+
+        <!-- Интересы -->
+        <div class="mb-3">
+            <label for="interesting" class="form-label">Что вам интересно?</label>
+            <select class="form-control" id="interesting">
+                <option>Известные картины</option>
+                <option>Современное искусство</option>
+                <option>Художники</option>
+                <option>Музеи</option>
+            </select>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="mb-3">
+            <input type="checkbox" id="agree">
+            <label for="agree">Согласен получать рассылку</label>
+        </div>
+
+        <button type="submit" class="iksweb">Подписаться</button>
+        </form>
+    </div>
 
         <!-- Информация -->
         <div class="info">
@@ -138,6 +129,6 @@
     </section>
 
     
-    
+  <script src="js/pages.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     }
 }
 
-.artists{
+.artists {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 25px;
@@ -18,7 +18,11 @@
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    background: rgba(20, 30, 70, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.artists_card:hover {
+    transform: scale(1.05);
 }
 
 .artists_card img {
@@ -37,22 +41,17 @@
 
 .card_art_name {
     color: #f5d28a;
-    font-size: 16px;
     margin: 0;
 }
 
-/* автор скрыт */
 .card_country {
     color: white;
-    font-size: 14px;
-    margin: 5px 0 0;
     opacity: 0;
     transform: translateY(10px);
     transition: 0.3s;
 }
 
-/* появляется при наведении */
-.card:hover .card_country {
+.artists_card:hover .card_country {
     opacity: 1;
     transform: translateY(0);
 }
