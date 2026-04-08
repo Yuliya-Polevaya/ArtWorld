@@ -51,7 +51,7 @@ function loadArtists(data) {
         document.querySelectorAll(".info .date_of_death p").forEach(el => el.textContent = artist.date_of_death || "-");
         document.querySelectorAll(".info .country p").forEach(el => el.textContent = artist.country || "-");
         // заполняем биографию
-        const bio = document.querySelector(".biography p");
+        const bio = document.querySelector(".biography_artist p");
         if (bio) bio.textContent = artist.biography || "-";
     }
 }
@@ -107,7 +107,7 @@ function loadPaintings(data) {
         document.querySelectorAll(".info .current_museum_id p").forEach(el => el.textContent = p.museums_name || "-");
         document.querySelectorAll(".info .current_collection_id p").forEach(el => el.textContent = p.collections_name || "-");
 
-        const desc = document.querySelector(".description p");
+        const desc = document.querySelector(".description_picture p");
         if (desc) desc.textContent = p.paintings_description || "-";
     }
 }
@@ -293,7 +293,7 @@ function loadCollections(data) {
         document.querySelectorAll(".info .city p").forEach(el => el.textContent = c.city || "-");
         document.querySelectorAll(".info .country p").forEach(el => el.textContent = c.country || "-");
 
-        const desc = document.querySelector(".description p");
+        const desc = document.querySelector(".description_collections p");
         if (desc) desc.textContent = c.description || "-";
     }
 }
