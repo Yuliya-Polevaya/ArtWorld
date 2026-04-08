@@ -9,14 +9,17 @@
 
 .artists {
     display: grid;
+    /* создает автоматически в ряд сколько помещается каждая минимум 240 1fr разделяет на равные части */
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 25px;
     padding: 40px;
 }
 
 .artists_card {
+    /* остовляет за собой свое первоночальное место даже если подвинулся */
     position: relative;
     border-radius: 12px;
+    /* всё что выходит за пределы карточки обрезается */
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -28,6 +31,7 @@
 .artists_card img {
     width: 100%;
     height: 220px;
+    /* заполняет полность и обрезает фото */
     object-fit: cover;
 }
 
@@ -46,12 +50,16 @@
 
 .card_country {
     color: white;
+    /* изначально не видно */
     opacity: 0;
+    /* немного опускается вниз */
     transform: translateY(10px);
     transition: 0.3s;
 }
 
 .artists_card:hover .card_country {
+    /* видно */
     opacity: 1;
+    /* становится как он есть с самого начала */
     transform: translateY(0);
 }

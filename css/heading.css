@@ -7,9 +7,13 @@
 
 body {
     background: url("tecstura.jpg");
+    /* покрывает весь экран  */
     background-size: cover;
+    /* не повторяем фон */
     background-repeat: no-repeat;
+    /* центрируем изображение */
     background-position: center;
+    /* убираем горизонтальную прокрутку */
     overflow-x: hidden;
 }
 
@@ -18,7 +22,9 @@ body {
     height: 80px;
     display: flex;
     padding: 0px;
+    /* по центру */
     align-items: center;
+    /* распределяем по краям */
     justify-content: space-between;
 }
 
@@ -70,10 +76,6 @@ body {
 }
 
 /* Кнопка меню */
-.pop-up {
-    margin-right: 40px;
-}
-
 .menu-btn {
     font-size: 14px;
     padding: 12px 40px;
@@ -96,6 +98,7 @@ body {
 /* Меню */
 .menu {
     display: none;
+    /* закреплено на экране */
     position: fixed;
     top: 70px;
     right: 20px;
@@ -217,7 +220,9 @@ body {
 @media (max-width: 768px) {
 
     .heading {
+        /* друг над другом */
         flex-direction: column;
+        /* выравнивание по центру */
         align-items: center;
         height: auto;
     }
@@ -269,6 +274,6 @@ body {
 
     .menu-btn {
         width: 100%;
-        padding: 10px;
+        padding: 10px 30px;
     }
 }
