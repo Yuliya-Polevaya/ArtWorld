@@ -329,7 +329,8 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
         body: formData
     });
 
-    alert("Сообщение отправлено!");
+    openModal("messageModal");
+
     // очистка формы
     document.getElementById("contactForm").reset();
 });
@@ -341,6 +342,7 @@ document.getElementById("subscribeForm").addEventListener("submit", async e => {
     const sub_name = document.getElementById("sub_name").value;
     const telephone = document.getElementById("sub_telephone").value;
     const email = document.getElementById("sub_email").value;
+    const agree = document.getElementById("agree").checked;
     //  создаем FormData
     const formData = new FormData();
     formData.append("name", document.getElementById("sub_name").value);
@@ -364,13 +366,33 @@ document.getElementById("subscribeForm").addEventListener("submit", async e => {
         alert("Неправильный email!");
         return;
     }
+
+    if (!agree) {
+        alert("Нужно согласие на рассылку");
+        return;
+    }
+
     // отправка данных на сервер
     await fetch("http://localhost/myserver/post_mailing.php", {
         method: "POST",
         body: formData
     });
 
-    alert("Вы подписались на рассылку!");
+    openModal("successModal");
+
     // очистка формы
     e.target.reset();
 });
+
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "block";
+    // закрытие при клике вне окна
+    window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    };
+    // автозакрытие
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 3000);
+}

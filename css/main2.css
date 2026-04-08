@@ -65,3 +65,21 @@
     border:2px solid #edb928;
     transition: all 0.2s ease;
 }
+
+.mini-block {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 215, 0, 0.85); /* золотой, полупрозрачный */
+    color: #111;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.mini-block:hover {
+    transform: scale(1.05);
+}
