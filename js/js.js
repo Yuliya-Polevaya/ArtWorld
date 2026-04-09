@@ -27,7 +27,7 @@ popupMenu.onclick = function(event) {
     }
 }
 
-
+// создание массива
 const messages = [
     "Искусство делает мир ярче!",
     "Каждая картина — маленькое чудо!",
@@ -35,11 +35,13 @@ const messages = [
     "Вдохновение рядом с тобой!",
     "Красота в деталях, открой её глазами!"
 ];
-
+// первая надпись
 let index = 0;
-const motivBlock = document.getElementById('motivBlock');
+// ищем элемент
+const motiv = document.getElementById('motiv');
 
 setInterval(() => {
+// меняем элемент и после того как все закончилось начинаем заново
     index = (index + 1) % messages.length;
     motiv.textContent = messages[index];
 }, 4000); // каждые 4 секунды меняется

@@ -17,13 +17,13 @@
     color: #FFD700;
     display: flex;
     align-items: flex-end; /* текст вниз */
-    background-size: cover;
+    background-size: cover; /* картина на сесь блок */
     background-position: center 50%; /* картинка снизу */
-    position: relative;
+    position: relative; /*чтобы был только в блоке */
     overflow: hidden;
     z-index: 1;
 }
-
+/* создание градиента */
 .text-card1::before,
 .text-card2::before,
 .text-card3::before,
@@ -43,7 +43,7 @@
     position: relative;
     z-index: 1;
 }
-
+/* карины для блока */
 .text-card1 {background-image: url("../img/mez.jpg");}
 .text-card2 {background-image: url("../img/xyd.jpg");}
 .text-card3 {background-image: url("../img/ang.jpg");}
@@ -58,17 +58,17 @@
 
 .xyd, .myz, .chas, .stil {
     width: 80%;
-    min-height: 400px;
+    min-height:400px;/* минимально */
     padding: 40px;
     margin: 30px auto;
     border-radius: 12px;
     text-align: left;
     color: #FFD700;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: column; /*чтобы шли друг за другом */
+    justify-content: space-between; /*верхний на верху низний внизу а текст по середине */
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /*обрезает все что не влазиет в блок */
     background-size: cover;
     background-position: center bottom;
     transition: transform 0.3s ease;
@@ -94,7 +94,6 @@
 
 .xyd h1, .myz h1, .chas h1, .stil h1 {
     font-size: 30px;
-    margin: 0 0 20px 0;
 }
 
 .xyd p, .myz p, .chas p, .stil p {
@@ -109,7 +108,6 @@
     text-decoration:none;
     padding:10px 20px;
     color:#ffffff;
-    background:#ffd700;
     border-radius:12px;
     border:2px solid #edb928;
     text-align: center;
@@ -136,7 +134,6 @@
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 14px;
-    font-weight: bold;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     z-index: 2;
     transition: transform 0.3s
