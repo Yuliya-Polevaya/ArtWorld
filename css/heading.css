@@ -30,8 +30,7 @@ body {
 
 /* Логотип */
 .logo {
-    font-size: 30px;
-    letter-spacing: 2px; 
+    font-size: 25px; 
     color: #e9cc24; 
     margin: 20px auto; 
     text-transform: uppercase;
@@ -207,11 +206,6 @@ body {
 
 /* Планшеты */
 @media (max-width: 1024px) {
-
-    .logo {
-        width: 40%;
-    }
-
     .search-container {
         width: 50%;
         margin-left: 10px;
@@ -232,14 +226,6 @@ body {
         /* выравнивание по центру */
         align-items: center;
         height: auto;
-    }
-
-    .logo {
-        width: 60%;
-    }
-
-    .logo img {
-        height: 100px;
     }
 
     .search-container {
