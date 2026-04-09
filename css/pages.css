@@ -1,5 +1,5 @@
 body {
-    background: url("tecstura.jpg");
+    background: url("tecstyra.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -53,18 +53,20 @@ body {
 
 .photo_genres {
     width: 80%;
-    height: auto;
+    max-height: 500px;
     box-sizing: border-box; 
     overflow: hidden;       
     margin: 0 auto;         
 }
 
 .photo_genres img {
-    width: 100%;
-    height: auto;
+    width: auto;         
+    max-width: 100%;     
+    max-height: 100%;
     display: block;
     border-radius: 10px;
     border: 2px solid #FFD700;
+    margin: 0 auto;
 }
 
 .photo_artist,

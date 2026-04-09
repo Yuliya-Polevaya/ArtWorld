@@ -6,7 +6,7 @@
 }
 
 body {
-    background: url("tecstura.jpg");
+    background: url("tecstyra.jpg");
     /* покрывает весь экран  */
     background-size: cover;
     /* не повторяем фон */
@@ -29,14 +29,21 @@ body {
 }
 
 /* Логотип */
-.logo{
-    width: 15%;
-    min-width: 100px;
-    height: 80px;
+.logo {
+    font-size: 30px;
+    letter-spacing: 2px; 
+    color: #e9cc24; 
+    margin: 20px auto; 
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.25); 
+    transition: all 0.3s ease;
+    text-align: center; 
+    display: block; 
 }
-.logo img{
-    width: 100%;
-    height: 100%;
+
+.logo:hover {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
 }
 
 /* Поиск */

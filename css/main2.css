@@ -9,14 +9,45 @@
 
 .text-card1, .text-card2, .text-card3, .text-card4 {
     width: 70%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,215,0,0.3);
-    backdrop-filter: blur(6px);
+    min-height: 250px;
     padding: 40px;
     margin: 20px auto;
     border-radius: 10px;
     text-align: left;
+    color: #FFD700;
+    display: flex;
+    align-items: flex-end; /* текст вниз */
+    background-size: cover;
+    background-position: center 50%; /* картинка снизу */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
+
+.text-card1::before,
+.text-card2::before,
+.text-card3::before,
+.text-card4::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 0;
+}
+
+/* текст поверх */
+.text-card1 p,
+.text-card2 p,
+.text-card3 p,
+.text-card4 p {
+    position: relative;
+    z-index: 1;
+}
+
+.text-card1 {background-image: url("../img/mez.jpg");}
+.text-card2 {background-image: url("../img/xyd.jpg");}
+.text-card3 {background-image: url("../img/ang.jpg");}
+.text-card4 {background-image: url("../img/gal.jpg");}
 
 #main-title{
     text-align:center;
@@ -26,20 +57,44 @@
 }
 
 .xyd, .myz, .chas, .stil {
-    width: 70%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,215,0,0.3);
-    backdrop-filter: blur(6px);
+    width: 80%;
+    min-height: 400px;
     padding: 40px;
-    margin: 20px auto;
-    border-radius: 10px;
-    text-align: center;
+    margin: 30px auto;
+    border-radius: 12px;
+    text-align: left;
     color: #FFD700;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center bottom;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.xyd:hover, .myz:hover, .chas:hover, .stil:hover {
+    transform: scale(1.02);
+}
+
+.xyd::before, .myz::before, .chas::before, .stil::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 0;
+}
+
+.xyd *, .myz *, .chas *, .stil * {
+    position: relative;
+    z-index: 1;
 }
 
 .xyd h1, .myz h1, .chas h1, .stil h1 {
-    font-size: 26px;
-    margin-bottom: 15px;
+    font-size: 30px;
+    margin: 0 0 20px 0;
 }
 
 .xyd p, .myz p, .chas p, .stil p {
@@ -47,7 +102,6 @@
     line-height: 1.5;
     margin-bottom: 20px;
 }
-
 .iksweb{
     display: inline-block;
     cursor: pointer;
@@ -58,6 +112,7 @@
     background:#ffd700;
     border-radius:12px;
     border:2px solid #edb928;
+    text-align: center;
     }
 .iksweb:hover{
     background:#ffb300;
@@ -66,20 +121,27 @@
     transition: all 0.2s ease;
 }
 
-.mini-block {
+/* фоновые картинки */
+.xyd { background-image: url("../img/xydo.jpg"); }
+.myz { background-image: url("../img/myze.jpg"); }
+.chas { background-image: url("../img/coll.jpg"); }
+.stil { background-image: url("../img/kart.jpg"); }
+
+.mini_block {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background: rgba(255, 215, 0, 0.85); /* золотой, полупрозрачный */
-    color: #111;
+    background: rgba(255, 215, 0, 0.85);
+    color: #f5f2f2;
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: bold;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
+    z-index: 2;
+    transition: transform 0.3s
 }
 
-.mini-block:hover {
+.mini_block:hover {
     transform: scale(1.05);
 }

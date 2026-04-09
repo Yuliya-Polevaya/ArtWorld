@@ -41,5 +41,5 @@ const motivBlock = document.getElementById('motivBlock');
 
 setInterval(() => {
     index = (index + 1) % messages.length;
-    motivBlock.textContent = messages[index];
+    motiv.textContent = messages[index];
 }, 4000); // каждые 4 секунды меняется
